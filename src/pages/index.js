@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
@@ -9,13 +9,37 @@ import { rhythm } from "../utils/typography"
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+  const isBrowser = typeof window !== `undefined`
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (isBrowser && window?.provenExpert) {
+        window.provenExpert.trustSeal({
+          widgetId: "8974f49c-1298-468a-8678-fc936136e306",
+          language: "en-US",
+          bannerColor: "#0DB1CD",
+          textColor: "#FFFFFF",
+          showReviews: true,
+          hideDate: false,
+          hideName: false,
+          bottom: "130px",
+          hasUnPublished: false,
+          hasReviews: true,
+          googleStars: false,
+        })
+      }
+    }, 100)
+  }, [])
 
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
         <Bio />
-        <p>No blog posts found. Add markdown posts to "content/blog" (or the directory you specified for the "gatsby-source-filesystem" plugin in gatsby-config.js).</p>
+        <p>
+          No blog posts found. Add markdown posts to "content/blog" (or the
+          directory you specified for the "gatsby-source-filesystem" plugin in
+          gatsby-config.js).
+        </p>
       </Layout>
     )
   }
@@ -24,7 +48,7 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
-      {posts.map((post) => {
+      {posts.map(post => {
         const title = post.frontmatter.title || post.fields.slug
         return (
           <article
