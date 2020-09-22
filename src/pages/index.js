@@ -13,8 +13,8 @@ const BlogIndex = ({ data, location }) => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (isBrowser && window?.provenExpert) {
-        window.provenExpert.trustSeal({
-          widgetId: "8974f49c-1298-468a-8678-fc936136e306",
+        window.provenExpert.proSeal({
+          widgetId: "1ed0a887-9e58-42c4-9182-14f06a886fce",
           language: "en-US",
           bannerColor: "#0DB1CD",
           textColor: "#FFFFFF",
