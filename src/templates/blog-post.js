@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
@@ -10,6 +10,28 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = pageContext
+
+  const isBrowser = typeof window !== `undefined`
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (isBrowser && window?.provenExpert) {
+        window.provenExpert.proSeal({
+          widgetId: "e4625fa3-47f8-4cd0-af91-a6feba8467ce",
+          language: "en-US",
+          bannerColor: "#0DB1CD",
+          textColor: "#FFFFFF",
+          showReviews: true,
+          hideDate: false,
+          hideName: false,
+          bottom: "130px",
+          hasUnPublished: false,
+          hasReviews: true,
+          googleStars: false,
+        })
+      }
+    }, 100)
+  }, [])
 
   return (
     <Layout location={location} title={siteTitle}>
