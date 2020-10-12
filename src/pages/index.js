@@ -14,7 +14,7 @@ const BlogIndex = ({ data, location }) => {
     const timeoutId = setTimeout(() => {
       if (isBrowser && window?.provenExpert) {
         window.provenExpert.proSeal({
-          widgetId: "e4625fa3-47f8-4cd0-af91-a6feba8467ce",
+          widgetId: "f4bb10a2-0af2-441b-8684-05bfd26e1e03",
           language: "en-US",
           bannerColor: "#0DB1CD",
           textColor: "#FFFFFF",
