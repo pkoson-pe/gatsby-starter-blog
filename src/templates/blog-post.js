@@ -27,7 +27,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           bottom: "130px",
           hasUnPublished: false,
           hasReviews: true,
-          googleStars: false,
+          googleStars: true,
         })
       }
     }, 100)
